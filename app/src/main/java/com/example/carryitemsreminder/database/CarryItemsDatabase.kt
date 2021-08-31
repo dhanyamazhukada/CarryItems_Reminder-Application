@@ -5,10 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [CarryItems::class], version = 1, exportSchema = false)
+@Database(entities = [CarryItemEntity::class], version = 1, exportSchema = false)
 abstract class CarryItemsDatabase : RoomDatabase() {
 
-    abstract val carryitemsdao: CarryItemsDao
+    abstract val carryitemsDao: CarryItemsDao
 
     companion object {
 
@@ -24,7 +24,8 @@ abstract class CarryItemsDatabase : RoomDatabase() {
                         context.applicationContext,
                         CarryItemsDatabase::class.java,
                         "carry_items_history_database"
-                    ).createFromAsset("database/CarryItemsReminder.db")
+                    )
+                        //.fallbackToDestructiveMigration()
                         .build()
                     INSTANCE = instance
                 }
