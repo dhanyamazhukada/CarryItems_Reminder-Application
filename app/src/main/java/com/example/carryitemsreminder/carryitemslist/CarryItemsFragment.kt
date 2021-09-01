@@ -21,13 +21,12 @@ class CarryItemsFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?, ): View {
-
         val binding: FragmentCarryitemsBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_carryitems, container, false)
 
         val application = requireNotNull(this.activity).application
 
-        val viewModelFactory = CarryItemsViewModelFactory()
+        val viewModelFactory = CarryItemsViewModelFactory( binding)
 
         // Get reference to the viewModel using viewmodelFactory reference
         val carryItemsViewModel = ViewModelProvider(
@@ -42,27 +41,4 @@ class CarryItemsFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val shoppingCarryItems: MutableList<CarryItemEntity> = mutableListOf()
-        val itemAdapter = CarryItemAdapter(shoppingCarryItems)
-
-        rvItemsList.adapter = itemAdapter
-        rvItemsList.layoutManager = LinearLayoutManager(this.context)
-
-
-        btnAddItem.setOnClickListener {
-            val enterItem = etEnterItem.text.toString()
-            if(enterItem.isNotEmpty()){
-                val item = CarryItemEntity(0, enterItem, carryItemStatus = false) // added to db
-                itemAdapter.addItem(item)
-                etEnterItem.text.clear()
-            }
-        }
-
-        btnDeleteItem.setOnClickListener {
-            itemAdapter.deleteItem()
-        }
-
-    }
 }
