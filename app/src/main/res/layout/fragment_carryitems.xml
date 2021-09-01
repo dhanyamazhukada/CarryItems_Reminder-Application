@@ -20,7 +20,7 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-/>
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 <EditText
     android:id="@+id/etEnterItem"
@@ -36,6 +36,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="ADD ITEM"
+    android:onClick="@{ ()-> carryitemsViewModel.onAddItemClicked()}"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toStartOf="@+id/btnDeleteItem" />
 
@@ -44,6 +45,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="DELETE ITEM"
+    android:onClick="@{ ()-> carryitemsViewModel.onDeleteItemClicked()}"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent" />
 
