@@ -11,7 +11,7 @@ import com.example.carryitemsreminder.R
 import com.example.carryitemsreminder.database.CarryItemEntity
 import kotlinx.android.synthetic.main.item.view.*
 
-class CarryItemAdapter (private val items:MutableList<CarryItemEntity>)
+class CarryItemAdapter (private val items:MutableList<CarryItemEntity>, private val listener: EventListener)
     : RecyclerView.Adapter<CarryItemAdapter.ItemViewHolder>()
 {
     class ItemViewHolder(itemView:View):RecyclerView.ViewHolder(itemView)
@@ -36,6 +36,18 @@ class CarryItemAdapter (private val items:MutableList<CarryItemEntity>)
         notifyDataSetChanged()
     }
 
+    fun setItems(newItems: List<CarryItemEntity>) {
+        items.clear()
+        items.addAll(newItems)
+        notifyDataSetChanged()
+    }
+
+    fun getAllCheckedItems(): List<CarryItemEntity> {
+        return items.filter {
+            it.carryItemStatus
+        }
+    }
+
     private fun toggleStrikeThrough(tvItemTitle:TextView, isChecked:Boolean)
     {
         if(isChecked) {
@@ -55,6 +67,7 @@ class CarryItemAdapter (private val items:MutableList<CarryItemEntity>)
             cbDone.setOnCheckedChangeListener { _, isChecked ->
                 toggleStrikeThrough(tvItemTitle, isChecked)
                 curItem.carryItemStatus = !curItem.carryItemStatus
+                listener.onCheckedStateChanged(curItem)
             }
         }
     }
@@ -62,4 +75,8 @@ class CarryItemAdapter (private val items:MutableList<CarryItemEntity>)
     override fun getItemCount(): Int {
         return items.size
     }
+}
+
+interface EventListener {
+    fun onCheckedStateChanged(item: CarryItemEntity)
 }

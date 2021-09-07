@@ -26,6 +26,7 @@ import com.example.carryitemsreminder.database.CarryItemsDatabase
 import com.example.carryitemsreminder.databinding.FragmentCarryitemsBinding
 import com.example.carryitemsreminder.databinding.FragmentDestinationBinding
 import kotlinx.android.synthetic.main.fragment_destination.*
+import kotlin.math.log
 
 class DestinationFragment : Fragment() {
 

@@ -17,20 +17,27 @@ import com.example.carryitemsreminder.database.CarryItemsDatabase
 import com.example.carryitemsreminder.databinding.FragmentCarryitemsBinding
 import kotlinx.android.synthetic.main.fragment_carryitems.*
 
-class CarryItemsFragment : Fragment() {
+class CarryItemsFragment : Fragment(), EventListener {
+    private var carryItemsViewModel: CarryItemsViewModel? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?, ): View {
         val binding: FragmentCarryitemsBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_carryitems, container, false)
 
-        val application = requireNotNull(this.activity).application
+        val type = arguments?.getString("type")
+        Log.d("TEST", "onCreateView: type: $type")
 
-        val viewModelFactory = CarryItemsViewModelFactory( binding)
+        binding.rvItemsList.adapter = CarryItemAdapter(mutableListOf(), this)
+
+        val datasource = context?.let { CarryItemsDatabase.getInstance(it).carryitemsDao }
+
+        val viewModelFactory = datasource?.let { CarryItemsViewModelFactory( binding, it, type) }
 
         // Get reference to the viewModel using viewmodelFactory reference
-        val carryItemsViewModel = ViewModelProvider(
-            this, viewModelFactory).get(CarryItemsViewModel::class.java)
+        carryItemsViewModel = viewModelFactory?.let {
+            ViewModelProvider(this, it).get(CarryItemsViewModel::class.java)
+        }
 
         // Assign the destinationViewModel binding variable to the destinationViewModel
         binding.carryitemsViewModel = carryItemsViewModel
@@ -39,6 +46,10 @@ class CarryItemsFragment : Fragment() {
         binding.setLifecycleOwner (this)
 
         return binding.root
+    }
+
+    override fun onCheckedStateChanged(item: CarryItemEntity) {
+        carryItemsViewModel?.updateItem(item)
     }
 
 }

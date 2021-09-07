@@ -15,37 +15,67 @@ import kotlinx.android.synthetic.main.fragment_carryitems.*
 import kotlinx.coroutines.launch
 
 //class CarryItemsViewModel(private val destination:Long = 0L,val database: CarryItemsDao)
-class CarryItemsViewModel(private val binding: FragmentCarryitemsBinding) : ViewModel() {
+class CarryItemsViewModel(private val binding: FragmentCarryitemsBinding, private val database: CarryItemsDao,
+                          private val itemType: String) : ViewModel() {
+
+    init {
+        getAllItemsInfo()
+    }
 
     private val allItems: MutableList<CarryItemEntity> = mutableListOf()
     //val database = CarryItemsDatabase.getInstance(getApplication()).carryitemsDao
 
     fun onAddItemClicked(){
-        val itemAdapter = CarryItemAdapter(allItems)
-        binding.rvItemsList.adapter = itemAdapter
+        //val itemAdapter = CarryItemAdapter(allItems)
+        //binding.rvItemsList.adapter = itemAdapter
 
         val enterItem = binding.etEnterItem.text.toString()
         if(enterItem.isNotEmpty()){
-            val item = CarryItemEntity(0, enterItem, carryItemStatus = false)
-            itemAdapter.addItem(item)
+            val item = CarryItemEntity(itemType = itemType, carryItem = enterItem, carryItemStatus = false)
+            (binding.rvItemsList.adapter as CarryItemAdapter).addItem(item)
+            insertItem(item)
             binding.etEnterItem.text.clear()
         }
     }
     fun onDeleteItemClicked(){
-        val itemAdapter = CarryItemAdapter(allItems)
-        binding.rvItemsList.adapter = itemAdapter
-        itemAdapter.deleteItem()
+        //val itemAdapter = CarryItemAdapter(allItems)
+        //binding.rvItemsList.adapter = itemAdapter
+        deleteItem()
+        (binding.rvItemsList.adapter as CarryItemAdapter).deleteItem()
     }
 //    fun getAllItemsObservers(): MutableLiveData<List<CarryItemEntity>> {
 //        return allItems
 //    }
 
-//    fun getAllItemsInfo() {
-//        val list = database.getAllItems()
-//        allItems.postValue(list)
-//    }
-//    fun insertItem(entity: CarryItemEntity){
-//        database.insert(entity)
-//        getAllItemsInfo()
-//    }
+    fun getAllItemsInfo() {
+        viewModelScope.launch {
+            val list = database.getAllItems(itemType)
+            if (list != null) {
+                allItems.addAll(list)
+            }
+            //val itemAdapter = CarryItemAdapter(allItems)
+            //binding.rvItemsList.adapter = itemAdapter
+            (binding.rvItemsList.adapter as CarryItemAdapter).setItems(allItems)
+        }
+    }
+    fun insertItem(entity: CarryItemEntity){
+        viewModelScope.launch {
+            database.insert(entity)
+        }
+    }
+
+    fun deleteItem() {
+        val itemsToDelete = (binding.rvItemsList.adapter as CarryItemAdapter).getAllCheckedItems()
+        viewModelScope.launch {
+            for (item in itemsToDelete) {
+                database.deleteItem(item.itemId)
+            }
+        }
+    }
+
+    fun updateItem(item: CarryItemEntity) {
+        viewModelScope.launch {
+            database.updateItem(item)
+        }
+    }
 }

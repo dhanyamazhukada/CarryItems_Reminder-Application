@@ -1,7 +1,9 @@
 package com.example.carryitemsreminder.destination
 
 import android.app.Application
+import android.os.Bundle
 import android.util.Log
+import androidx.core.os.bundleOf
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -24,7 +26,19 @@ class DestinationViewModel(application: Application, private val navigation: Nav
     fun onDestinationSelected(){
         viewModelScope.launch {
             navController = navigation
-            navController.navigate(R.id.action_destinationFragment_to_carryItemsFragment)
+            navController.navigate(
+                R.id.action_destinationFragment_to_carryItemsFragment,
+                bundleOf("type" to "Shopping" ))
+        }
+    }
+
+    fun onGymSelected(){
+        viewModelScope.launch {
+            navController = navigation
+            navController.navigate(
+                R.id.action_destinationFragment_to_carryItemsFragment,
+                bundleOf("type" to "Gym" )
+            )
         }
     }
 }

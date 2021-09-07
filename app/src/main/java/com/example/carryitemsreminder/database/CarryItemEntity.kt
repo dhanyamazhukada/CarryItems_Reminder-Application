@@ -9,6 +9,9 @@ data class CarryItemEntity(
     @PrimaryKey(autoGenerate = true)
     var itemId: Long = 0L,
 
+    @ColumnInfo(name = "item_type")
+    var itemType: String = "",
+
     @ColumnInfo(name = "carry_item")
     val carryItem: String = "",
 
