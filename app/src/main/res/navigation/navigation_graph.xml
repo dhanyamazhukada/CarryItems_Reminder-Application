@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/destinationFragment">
+    <fragment
+        android:id="@+id/destinationFragment"
+        android:name="com.example.carryitemsreminder.destination.DestinationFragment"
+        android:label="DestinationFragment"
+        tools:layout="@layout/fragment_destination">
+        <action
+            android:id="@+id/action_destinationFragment_to_carryItemsFragment"
+            app:destination="@id/carryItemsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/carryItemsFragment"
+        android:name="com.example.carryitemsreminder.carryitemslist.CarryItemsFragment"
+        android:label="CarryItemsFragment"
+        tools:layout="@layout/fragment_carryitems">
+        <action
+            android:id="@+id/action_carryItemsFragment_to_destinationFragment"
+            app:destination="@id/destinationFragment" />
+    </fragment>
+</navigation>
