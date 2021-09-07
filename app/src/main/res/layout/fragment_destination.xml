@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- Wrapping the layout into /layout to make it available with data binding. -->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <!-- Data to make available to the XML via data binding. In this case,
-         the whole ViewModel, so that we can access the LiveData,
-         click handlers, and state variables. -->
 
     <data>
         <variable
@@ -16,8 +11,7 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools.context= ".destination.DestinationFragment">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/tvHeading"

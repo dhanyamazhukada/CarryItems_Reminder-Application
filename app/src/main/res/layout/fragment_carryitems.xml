@@ -7,10 +7,10 @@
             name="carryitemsViewModel"
             type="com.example.carryitemsreminder.carryitemslist.CarryItemsViewModel" />
     </data>
+
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools.context= ".carryitemslist.CarryItemsFragment">
+    android:layout_height="match_parent">
 
 <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/rvItemsList"

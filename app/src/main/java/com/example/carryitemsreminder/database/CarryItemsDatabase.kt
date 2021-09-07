@@ -25,7 +25,6 @@ abstract class CarryItemsDatabase : RoomDatabase() {
                         CarryItemsDatabase::class.java,
                         "carry_items_history_database"
                     )
-                        //.fallbackToDestructiveMigration()
                         .build()
                     INSTANCE = instance
                 }

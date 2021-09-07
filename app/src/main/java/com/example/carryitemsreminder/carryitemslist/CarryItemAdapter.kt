@@ -1,7 +1,6 @@
 package com.example.carryitemsreminder.carryitemslist
 
 import android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,12 +10,12 @@ import com.example.carryitemsreminder.R
 import com.example.carryitemsreminder.database.CarryItemEntity
 import kotlinx.android.synthetic.main.item.view.*
 
-class CarryItemAdapter (private val items:MutableList<CarryItemEntity>, private val listener: EventListener)
-    : RecyclerView.Adapter<CarryItemAdapter.ItemViewHolder>()
-{
+class CarryItemAdapter (private val items:MutableList<CarryItemEntity>,
+                        private val listener: EventListener) : RecyclerView.Adapter<CarryItemAdapter.ItemViewHolder>() {
+
     class ItemViewHolder(itemView:View):RecyclerView.ViewHolder(itemView)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder // will create viewholder
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder
     {
         return ItemViewHolder(
             LayoutInflater.from(parent.context).inflate(
@@ -57,7 +56,7 @@ class CarryItemAdapter (private val items:MutableList<CarryItemEntity>, private 
             tvItemTitle.paintFlags = tvItemTitle.paintFlags and STRIKE_THRU_TEXT_FLAG.inv()
         }
     }
-    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) // bind data from our itemslist to the views of our list
+    override fun onBindViewHolder(holder: ItemViewHolder, position: Int)
     {
         val curItem = items[position]
         holder.itemView.apply {

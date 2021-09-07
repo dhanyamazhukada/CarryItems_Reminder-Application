@@ -4,11 +4,9 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import com.example.carryitemsreminder.database.CarryItemsDao
 
-class DestinationViewModelFactory (private val application:Application, private val navigation: NavController)
-                                    :ViewModelProvider.Factory {
+class DestinationViewModelFactory (private val application:Application,
+                                   private val navigation: NavController) :ViewModelProvider.Factory {
     @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(DestinationViewModel::class.java)) {
