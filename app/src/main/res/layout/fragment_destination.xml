@@ -18,8 +18,8 @@
         android:layout_width="0dp"
         android:layout_height="80dp"
         android:layout_marginTop="10dp"
-        android:text="Where are you heading?"
-        android:textSize="32sp"
+        android:text="@string/Where_are_you_heading"
+        android:textSize="@dimen/header_text_size"
         android:textStyle="bold"
         android:fontFamily="sans-serif-medium"
         android:gravity="center"
@@ -35,12 +35,12 @@
         android:layout_width="0dp"
         android:layout_height="80dp"
         android:layout_marginTop="10dp"
-        android:text="SHOPPING"
+        android:text="@string/Shopping"
         android:textSize="@dimen/button_text_size"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvHeading"
-        android:onClick="@{() -> destinationViewModel.onDestinationSelected()}"/>
+        android:onClick="@{() -> destinationViewModel.onShoppingSelected()}"/>
 
     <Button
         android:layout_marginStart="50dp"
@@ -50,7 +50,7 @@
         android:layout_height="80dp"
         android:layout_marginTop="10dp"
         android:textSize="@dimen/button_text_size"
-        android:text="GYM"
+        android:text="@string/Gym"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnShopping"
@@ -64,10 +64,11 @@
         android:layout_height="80dp"
         android:textSize="@dimen/button_text_size"
         android:layout_marginTop="10dp"
-        android:text="OFFICE"
+        android:text="@string/Office"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnGym" />
+        app:layout_constraintTop_toBottomOf="@+id/btnGym"
+        android:onClick="@{() -> destinationViewModel.onOfficeSelected()}"/>
 
     <Button
         android:layout_marginStart="50dp"
@@ -76,11 +77,12 @@
         android:layout_width="0dp"
         android:layout_height="80dp"
         android:layout_marginTop="10dp"
-        android:text="OUTING"
+        android:text="@string/Outing"
         android:textSize="@dimen/button_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnOffice" />
+        app:layout_constraintTop_toBottomOf="@+id/btnOffice"
+        android:onClick="@{() -> destinationViewModel.onOutingSelected()}"/>
 
     <Button
         android:layout_marginStart="50dp"
@@ -88,12 +90,13 @@
         android:id="@+id/btnSports"
         android:layout_width="0dp"
         android:layout_height="80dp"
-        android:text="SPORTS"
+        android:text="@string/Sports"
         android:layout_marginTop="10dp"
         android:textSize="@dimen/button_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnOuting"/>
+        app:layout_constraintTop_toBottomOf="@+id/btnOuting"
+        android:onClick="@{() -> destinationViewModel.onSportsSelected()}"/>
 
     <Button
         android:layout_marginStart="50dp"
@@ -101,12 +104,13 @@
         android:id="@+id/btnSwimming"
         android:layout_width="0dp"
         android:layout_height="80dp"
-        android:text="SWIMMING"
+        android:text="@string/Swimming"
         android:layout_marginTop="10dp"
         android:textSize="@dimen/button_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSports" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSports"
+        android:onClick="@{() -> destinationViewModel.onSwimmingSelected()}"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

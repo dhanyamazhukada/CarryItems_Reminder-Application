@@ -9,11 +9,12 @@ import com.example.carryitemsreminder.R
 import kotlinx.coroutines.launch
 
 class DestinationViewModel(application: Application,
-                           private val navigation: NavController) : AndroidViewModel(application) {
+                           private val navigation: NavController)
+    : AndroidViewModel(application) {
 
     private lateinit var navController: NavController
 
-    fun onDestinationSelected(){
+    fun onShoppingSelected(){
         viewModelScope.launch {
             navController = navigation
             navController.navigate(
@@ -28,6 +29,46 @@ class DestinationViewModel(application: Application,
             navController.navigate(
                 R.id.action_destinationFragment_to_carryItemsFragment,
                 bundleOf("type" to "Gym" )
+            )
+        }
+    }
+
+    fun onOfficeSelected(){
+        viewModelScope.launch {
+            navController = navigation
+            navController.navigate(
+                R.id.action_destinationFragment_to_carryItemsFragment,
+                bundleOf("type" to "Office" )
+            )
+        }
+    }
+
+    fun onOutingSelected(){
+        viewModelScope.launch {
+            navController = navigation
+            navController.navigate(
+                R.id.action_destinationFragment_to_carryItemsFragment,
+                bundleOf("type" to "Outing" )
+            )
+        }
+    }
+
+    fun onSportsSelected(){
+        viewModelScope.launch {
+            navController = navigation
+            navController.navigate(
+                R.id.action_destinationFragment_to_carryItemsFragment,
+                bundleOf("type" to "Sports" )
+            )
+        }
+    }
+
+    fun onSwimmingSelected(){
+        viewModelScope.launch {
+            navController = navigation
+            navController.navigate(
+                R.id.action_destinationFragment_to_carryItemsFragment,
+                bundleOf("type" to "Swimming" )
             )
         }
     }

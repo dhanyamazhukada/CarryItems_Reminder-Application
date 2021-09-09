@@ -11,7 +11,8 @@ import com.example.carryitemsreminder.database.CarryItemEntity
 import kotlinx.android.synthetic.main.item.view.*
 
 class CarryItemAdapter (private val items:MutableList<CarryItemEntity>,
-                        private val listener: EventListener) : RecyclerView.Adapter<CarryItemAdapter.ItemViewHolder>() {
+                        private val listener: EventListener)
+    : RecyclerView.Adapter<CarryItemAdapter.ItemViewHolder>() {
 
     class ItemViewHolder(itemView:View):RecyclerView.ViewHolder(itemView)
 

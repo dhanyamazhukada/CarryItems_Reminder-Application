@@ -8,7 +8,8 @@ import com.example.carryitemsreminder.databinding.FragmentCarryitemsBinding
 
 class CarryItemsViewModelFactory (private val binding: FragmentCarryitemsBinding,
                                   private val database: CarryItemsDao,
-                                  private val itemType: String?) : ViewModelProvider.Factory {
+                                  private val itemType: String?)
+    : ViewModelProvider.Factory {
 
     @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {

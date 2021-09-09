@@ -9,7 +9,8 @@ import kotlinx.coroutines.launch
 
 class CarryItemsViewModel(private val binding: FragmentCarryitemsBinding,
                           private val database: CarryItemsDao,
-                          private val itemType: String) : ViewModel() {
+                          private val itemType: String)
+    : ViewModel() {
 
     init {
         getAllItemsInfo()
