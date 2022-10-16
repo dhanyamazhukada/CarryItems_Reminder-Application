@@ -2,4 +2,20 @@
     <string name="app_name">CarryItems Reminder</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="Where_are_you_heading">Where are you heading?</string>
+    <string name="Enter_Item">Enter Item</string>
+    <string name="Example">Example</string>
+
+    <!-- Button labels -->
+    <string name="Shopping">SHOPPING</string>
+    <string name="Gym">GYM</string>
+    <string name="Office">OFFICE</string>
+    <string name="Outing">OUTING</string>
+    <string name="Sports">SPORTS</string>
+    <string name="Swimming">SWIMMING</string>
+    <string name="Add_Item">ADD ITEM</string>
+    <string name="Delete_Item">DELETE ITEM</string>
+
+
 </resources>
