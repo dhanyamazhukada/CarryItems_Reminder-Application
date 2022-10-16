@@ -25,7 +25,7 @@
 <EditText
     android:id="@+id/etEnterItem"
     android:layout_width="0dp"
-    android:layout_height="wrap_content"
+    android:layout_height="60dp"
     android:hint="@string/Enter_Item"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toStartOf="@+id/btnAddItem"
@@ -33,19 +33,30 @@
 
 <Button
     android:id="@+id/btnAddItem"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="120dp"
+    android:layout_height="60dp"
     android:text="@string/Add_Item"
     android:onClick="@{ ()-> carryitemsViewModel.onAddItemClicked()}"
+    app:layout_constraintStart_toEndOf="@id/etEnterItem"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toStartOf="@+id/btnDeleteItem" />
+    app:layout_constraintEnd_toStartOf="@+id/space_line" />
+
+    <TextView
+        android:id="@+id/space_line"
+        android:layout_width="2dp"
+        android:layout_height="60dp"
+        app:layout_constraintStart_toEndOf="@id/btnAddItem"
+        app:layout_constraintEnd_toStartOf="@id/btnDeleteItem"
+        app:layout_constraintTop_toTopOf="@id/btnAddItem"
+        />
 
 <Button
     android:id="@+id/btnDeleteItem"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="120dp"
+    android:layout_height="60dp"
     android:text="@string/Delete_Item"
     android:onClick="@{ ()-> carryitemsViewModel.onDeleteItemClicked()}"
+
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent" />
 

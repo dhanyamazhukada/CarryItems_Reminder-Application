@@ -14,8 +14,8 @@
     <string name="Outing">OUTING</string>
     <string name="Sports">SPORTS</string>
     <string name="Swimming">SWIMMING</string>
-    <string name="Add_Item">ADD ITEM</string>
-    <string name="Delete_Item">DELETE ITEM</string>
+    <string name="Add_Item">ADD</string>
+    <string name="Delete_Item">DELETE</string>
 
 
 </resources>
